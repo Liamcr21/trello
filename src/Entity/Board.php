@@ -15,9 +15,6 @@ class Board
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'boards')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $owner_id = null;
 
     #[ORM\Column(length: 50)]
     private ?string $libelle = null;
@@ -35,17 +32,7 @@ class Board
         return $this->id;
     }
 
-    public function getOwnerId(): ?User
-    {
-        return $this->owner_id;
-    }
 
-    public function setOwnerId(?User $owner_id): self
-    {
-        $this->owner_id = $owner_id;
-
-        return $this;
-    }
 
     public function getLibelle(): ?string
     {

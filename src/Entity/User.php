@@ -31,16 +31,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\OneToMany(mappedBy: 'owner_id', targetEntity: Board::class)]
-    private Collection $boards;
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    public function __construct()
-    {
-        $this->boards = new ArrayCollection();
-    }
+
 
     public function getId(): ?int
     {
@@ -112,35 +107,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    /**
-     * @return Collection<int, Board>
-     */
-    public function getBoards(): Collection
-    {
-        return $this->boards;
-    }
 
-    public function addBoard(Board $board): self
-    {
-        if (!$this->boards->contains($board)) {
-            $this->boards->add($board);
-            $board->setOwnerId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBoard(Board $board): self
-    {
-        if ($this->boards->removeElement($board)) {
-            // set the owning side to null (unless already changed)
-            if ($board->getOwnerId() === $this) {
-                $board->setOwnerId(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function isVerified(): bool
     {
