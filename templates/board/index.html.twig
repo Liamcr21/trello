@@ -14,19 +14,18 @@
                 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">{{ board.libelle }} {{ board.id }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <a href="{{ path('app_board_show', {'id': board.id}) }}">show</a>
-      <a href="{{ path('app_board_edit', {'id': board.id}) }}">edit</a>
+      <a class="btn btn-success" href="{{ path('app_board_show', {'id': board.id}) }}">En voir plus</a>
+      <a class="btn btn-warning" href="{{ path('app_board_edit', {'id': board.id}) }}">Modifier</a>
   </div>
 </div>
                 
         {% else %}
             
-                <p>no records found</p>
+                <p>Aucun tableau sur votre compte</p>
             
         {% endfor %}
         </tbody>
     </table>
 
-    <a  class="btn" href="{{ path('app_board_new') }}">Créer un nouveau tableau</a>
+    <a  class="btn btn-info" href="{{ path('app_board_new') }}">Créer un nouveau tableau</a>
 {% endblock %}
