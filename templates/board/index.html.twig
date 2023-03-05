@@ -16,6 +16,7 @@
     <h5 class="card-title">{{ board.libelle }} {{ board.id }}</h5>
       <a class="btn btn-success" href="{{ path('app_board_show', {'id': board.id}) }}">En voir plus</a>
       <a class="btn btn-warning" href="{{ path('app_board_edit', {'id': board.id}) }}">Modifier</a>
+    <a class="btn btn-danger" href="{{ path('app_board_delete', {'id': board.id}) }}">Supprimer</a>
   </div>
 </div>
                 
