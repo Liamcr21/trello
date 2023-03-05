@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Board{% endblock %}
+{% block title %}Modifier un tableau{% endblock %}
 
 {% block body %}
-    <h1>Edit Board</h1>
+    <h1>Modifier un tableau</h1>
 
     {{ include('board/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_board_index') }}">back to list</a>
+    <a href="{{ path('app_board_index') }}">Retour au tableau</a>
 
     {{ include('board/_delete_form.html.twig') }}
 {% endblock %}
