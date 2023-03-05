@@ -12,12 +12,14 @@
         <label for="username">Email:</label>
         <input type="text" id="username" name="_username" value="{{ last_username }}">
 
-        <label for="password">Password:</label>
+        <label for="password">Mot de passe:</label>
         <input type="password" id="password" name="_password">
 
         { 
         <input type="hidden" name="_target_path" value="/board">}
 
-        <button type="submit">login</button>
+        <button type="submit" class="btn btn-success">login</button>
     </form>
+<br>
+    <a class="btn btn-info" href="register">S'inscire</a>
 {% endblock %}
