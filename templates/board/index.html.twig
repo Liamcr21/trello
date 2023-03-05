@@ -11,9 +11,9 @@
                 
          
    <div class="d-flex align-items-start">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
   <div class="card-body">
-    <h5 class="card-title">[{{ board.id }}] Nom : {{ board.libelle }} </h5>
+    <h5 class="card-title">[Tableau {{ board.id }}]  {{ board.libelle }} </h5>
    <div class="btn-style" style="display: flex; flex-direction: column;">
       <a class="btn btn-success" href="{{ path('app_board_show', {'id': board.id}) }}">En voir plus</a>
       <a class="btn btn-warning" href="{{ path('app_board_edit', {'id': board.id}) }}">Modifier le tableau</a>
