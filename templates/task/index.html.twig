@@ -1,33 +1,28 @@
-<!DOCTYPE html>
-
-<title>Task index</title>
+{% extends 'base.html.twig' %}
+{% block title %}Mission{% endblock %}
 
 {% block body %}
-    <h1>Task index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+  
         {% for task in tasks %}
-            <tr>
-                <td>{{ task.id }}</td>
-                <td>
-                    <a href="{{ path('app_task_show', {'id': task.id}) }}">show</a>
-                    <a href="{{ path('app_task_edit', {'id': task.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="2">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+          
 
-    <a href="{{ path('app_task_new') }}">Create new</a>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">[ {{ task.id }}]  {{ task.nom }}</h5>
+     <p class="card-text">{{ task.description }}</p>
+         <a class="btn btn-success" href="{{ path('app_task_show', {'id': task.id}) }}">Voir la mission</a>
+        <a class="btn btn-warning" href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier la mission</a>
+            {{ include('task/_delete_form.html.twig') }}
+  </div>
+</div>
+        
+
+              
+                
+        {% else %}
+               Pas de mission disponible
+        {% endfor %}
+
+
+    <a class"btn btn-info" href="{{ path('app_task_new') }}">Créer une mission</a>
 {% endblock %}

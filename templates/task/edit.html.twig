@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 
-<title>Edit Task</title>
+<title>Modifier une mission</title>
 
 {% block body %}
-    <h1>Edit Task</h1>
+    <h1>Modifier une mission</h1>
 
-    {{ include('task/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('task/_form.html.twig', {'button_label btn btn-warning': 'Modifier la mission'}) }}
 
-    <a href="{{ path('app_task_index') }}">back to list</a>
+    <a class="btn btn-info" href="{{ path('app_task_index') }}">Retour</a>
 
     {{ include('task/_delete_form.html.twig') }}
 {% endblock %}
+k

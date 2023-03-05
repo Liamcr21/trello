@@ -16,8 +16,8 @@ class Task
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     private ?TaskList $task_list_id = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $task_name = null;
+    #[ORM\Column(length: 100)]
+    private ?string $nom = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
@@ -39,14 +39,14 @@ class Task
         return $this;
     }
 
-    public function getTaskName(): ?string
+    public function getNom(): ?string
     {
-        return $this->task_name;
+        return $this->nom;
     }
 
-    public function setTaskName(string $task_name): self
+    public function setNom(string $nom): self
     {
-        $this->task_name = $task_name;
+        $this->nom = $nom;
 
         return $this;
     }
