@@ -5,9 +5,8 @@
 {% block body %}
     <h1>Modifier un tableau</h1>
 
-    {{ include('board/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('board/_form.html.twig', {'button_label btn btn-warning': 'Modifer le tableau'}) }}
 
-    <a class="btn btn-warning" href="{{ path('app_board_index') }}">Retour au tableau</a>
+    <a class="btn btn-info" href="{{ path('app_board_index') }}">Retour au tableau</a>
 
-    {{ include('board/_delete_form.html.twig') }}
 {% endblock %}

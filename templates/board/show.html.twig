@@ -3,16 +3,20 @@
 {% block title %}{{ board.libelle }}{% endblock %}
 
 {% block body %}
-
-                 <div class="card" style="width: 18rem;">
+<h1>  tableau [{{ board.id }}]</h1>
+     <a class="btn btn-info" href="{{ path('app_board_index') }}">Retour a la liste des tableaux</a>
+<br>
+                 <div class="card" style="width: 20rem;">
   <div class="card-body">
     <h5 class="card-title">{{ board.libelle }} {{ board.id }}</h5>
-    <a class="btn btn-warning" href="{{ path('app_board_edit', {'id': board.id}) }}">Modifier</a>
-      {{ include('board/_delete_form.html.twig') }}
+       <div class="btn-style" style="display: flex; flex-direction: column;">
+      <a class="btn btn-warning" href="{{ path('app_board_edit', {'id': board.id}) }}">Modifier le tableau</a>
+            {{ include('board/_delete_form.html.twig') }}
+
+</div>
   </div>
 </div>
 
-     <a class="btn btn-info" href="{{ path('app_board_index') }}">Retour a la liste des tableaux</a>
 
 
 {% endblock %}
