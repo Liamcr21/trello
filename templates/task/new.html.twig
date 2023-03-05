@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+{% extends 'base.html.twig' %}
 
-<title>New Task</title>
+
+<title>Créer une mission</title>
 
 {% block body %}
-    <h1>Create new Task</h1>
+    <h1>Créer une mission</h1>
 
     {{ include('task/_form.html.twig') }}
 
-    <a href="{{ path('app_task_index') }}">back to list</a>
+    <a class="btn btn-info" href="{{ path('app_task_index') }}">Retour</a>
 {% endblock %}
