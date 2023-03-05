@@ -13,6 +13,8 @@ class TaskType extends AbstractType
     {
         $builder
             ->add('task_list_id')
+            ->add('task_name')
+            ->add('description')
         ;
     }
 
