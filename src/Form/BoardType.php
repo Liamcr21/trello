@@ -6,14 +6,13 @@ use App\Entity\Board;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class BoardType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('libelle')
+            ->add('board_name')
         ;
     }
 
@@ -24,5 +23,3 @@ class BoardType extends AbstractType
         ]);
     }
 }
-
-

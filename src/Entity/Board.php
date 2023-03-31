@@ -15,11 +15,10 @@ class Board
     #[ORM\Column]
     private ?int $id = null;
 
-
     #[ORM\Column(length: 50)]
-    private ?string $libelle = null;
+    private ?string $board_name = null;
 
-    #[ORM\OneToMany(mappedBy: 'board', targetEntity: TaskList::class)]
+    #[ORM\OneToMany(mappedBy: 'board', targetEntity: TaskList::class, cascade : ['remove'])]
     private Collection $taskLists;
 
     public function __construct()
@@ -32,16 +31,14 @@ class Board
         return $this->id;
     }
 
-
-
-    public function getLibelle(): ?string
+    public function getBoardName(): ?string
     {
-        return $this->libelle;
+        return $this->board_name;
     }
 
-    public function setLibelle(string $libelle): self
+    public function setBoardName(string $board_name): self
     {
-        $this->libelle = $libelle;
+        $this->board_name = $board_name;
 
         return $this;
     }

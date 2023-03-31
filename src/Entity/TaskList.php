@@ -15,18 +15,21 @@ class TaskList
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $libelle = null;
+    #[ORM\Column(name: 'task_list_name', length: 50)]
+    private ?string $taskListName = null;
 
-    #[ORM\ManyToOne(inversedBy: 'taskLists')]
+    #[ORM\ManyToOne(inversedBy: 'taskLists', cascade: ['remove'])]
     private ?Board $board = null;
 
-    #[ORM\OneToMany(mappedBy: 'task_list_id', targetEntity: Task::class)]
-    private Collection $tasks;
+    #[ORM\OneToMany(mappedBy: 'taskList', targetEntity: Task::class, cascade: ['remove'])]
+    private Collection $task;
+
+
+
 
     public function __construct()
     {
-        $this->tasks = new ArrayCollection();
+        $this->task = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -34,14 +37,14 @@ class TaskList
         return $this->id;
     }
 
-    public function getLibelle(): ?string
+    public function getTaskListName(): ?string
     {
-        return $this->libelle;
+        return $this->taskListName;
     }
 
-    public function setLibelle(string $libelle): self
+    public function setTaskListName(string $task_list_name): self
     {
-        $this->libelle = $libelle;
+        $this->taskListName = $task_list_name;
 
         return $this;
     }
@@ -61,16 +64,16 @@ class TaskList
     /**
      * @return Collection<int, Task>
      */
-    public function getTasks(): Collection
+    public function getTask(): Collection
     {
-        return $this->tasks;
+        return $this->task;
     }
 
     public function addTask(Task $task): self
     {
-        if (!$this->tasks->contains($task)) {
-            $this->tasks->add($task);
-            $task->setTaskListId($this);
+        if (!$this->task->contains($task)) {
+            $this->task->add($task);
+            $task->setTaskList($this);
         }
 
         return $this;
@@ -78,13 +81,20 @@ class TaskList
 
     public function removeTask(Task $task): self
     {
-        if ($this->tasks->removeElement($task)) {
+        if ($this->task->removeElement($task)) {
             // set the owning side to null (unless already changed)
-            if ($task->getTaskListId() === $this) {
-                $task->setTaskListId(null);
+            if ($task->getTaskList() === $this) {
+                $task->setTaskList(null);
             }
         }
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->taskListName;
+         }
+
+        
 }

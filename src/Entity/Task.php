@@ -13,40 +13,28 @@ class Task
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'tasks')]
-    private ?TaskList $task_list_id = null;
-
-    #[ORM\Column(length: 100)]
-    private ?string $nom = null;
+    #[ORM\Column(length: 50)]
+    private ?string $task_name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
+
+    #[ORM\ManyToOne(inversedBy: 'task')]
+    private ?TaskList $taskList = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTaskListId(): ?TaskList
+    public function getTaskName(): ?string
     {
-        return $this->task_list_id;
+        return $this->task_name;
     }
 
-    public function setTaskListId(?TaskList $task_list_id): self
+    public function setTaskName(string $task_name): self
     {
-        $this->task_list_id = $task_list_id;
-
-        return $this;
-    }
-
-    public function getNom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
+        $this->task_name = $task_name;
 
         return $this;
     }
@@ -59,6 +47,18 @@ class Task
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getTaskList(): ?TaskList
+    {
+        return $this->taskList;
+    }
+
+    public function setTaskList(?TaskList $taskList): self
+    {
+        $this->taskList = $taskList;
 
         return $this;
     }
