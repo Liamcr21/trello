@@ -40,13 +40,6 @@ class BoardController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_board_show', methods: ['GET'])]
-    public function show(Board $board): Response
-    {
-        return $this->render('board/show.html.twig', [
-            'board' => $board,
-        ]);
-    }
 
     #[Route('/{id}/edit', name: 'app_board_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Board $board, BoardRepository $boardRepository): Response
@@ -75,4 +68,16 @@ class BoardController extends AbstractController
 
         return $this->redirectToRoute('app_board_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    #[Route('/{id}', name: 'app_board_show', methods: ['GET'])]
+    public function show(Board $board): Response
+{
+    $taskLists = $board->getTaskLists();
+
+    return $this->render('board/show.html.twig', [
+        'board' => $board,
+        'taskLists' => $taskLists,
+    ]);
+}
 }
