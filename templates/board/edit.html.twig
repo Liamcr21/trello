@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier un tableau{% endblock %}
+{% block title %}Modifier le tableau{% endblock %}
 
 {% block body %}
-    <h1>Modifier un tableau</h1>
+<div class="container">
+    <h1 class="text-center">Modifier le tableau</h1>
+<hr>
+    {{ include('board/_form.html.twig', {'button_label': 'Validé la modification'}) }}
+    {{ include('board/_delete_form.html.twig') }}
 
-    {{ include('board/_form.html.twig', {'button_label btn btn-warning': 'Modifer le tableau'}) }}
-
-    <a class="btn btn-info" href="{{ path('app_board_index') }}">Retour au tableau</a>
-
+<hr>
+    <a class="btn btn-info" href="{{ path('app_board_index') }}">Retour a la liste des tableaux</a>
+</div>
 {% endblock %}

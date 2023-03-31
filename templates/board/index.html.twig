@@ -1,36 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Trello NWS
-{% endblock %}
+{% block title %}Board index{% endblock %}
 
 {% block body %}
-	<h1>Trello NWS</h1>
-	<h3>Liste des tableaux
-	</h3>
-	<a class="btn btn-info" href="{{ path('app_board_new') }}">Créer un nouveau tableau</a>
-	<br>
-	<br>
+<div class="container">
 
-{% for i in range(0, boards|length, 3) %}
-	<div class="row" >
-		{% for board in boards[i:i+3] %}
-			<div class="col-md-4 mx-auto" style="margin-bottom: 20px">
-				<div class="card" style="width: 20rem;" >
-					<div class="card-body">
-						<h5 class="card-title">[Tableau {{ board.id }}] {{ board.libelle }}</h5>
-						<div class="btn-style" style="display: flex; flex-direction: column;">
-							<a class="btn btn-success" href="{{ path('app_board_show', {'id': board.id}) }}">En voir plus</a>
-							<a class="btn btn-warning" href="{{ path('app_board_edit', {'id': board.id}) }}">Modifier le tableau</a>
-							{{ include('board/_delete_form.html.twig') }}
-						</div>
-					</div>
-				</div>
-			</div>
-		{% endfor %}
-	</div>
-{% else %}
-	<p>Aucun tableau sur votre compte</p>
-{% endfor %}
+    <h1 class="text-center">Liste des tableaux</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#ID</th>
+            <th>Nom</th>
+            <th>nb de tasklist</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for board in boards %}
+        <tr>
+            <td>{{ board.id }}</td>
+            <td>{{ board.boardName }}</td>
+            <td>{{ board.taskLists.count() }}</td>
+                        <td>
+
+                <a class="btn btn-info" href="{{ path('app_board_show', {'id': board.id}) }}">Voir</a>
+                <a class="btn btn-warning"href="{{ path('app_board_edit', {'id': board.id}) }}">Modifier</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">Aucun tableau :(</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <a class="btn btn-success"href="{{ path('app_board_new') }}">Créer un nouveau</a>
+
+</div>
 
 
 {% endblock %}

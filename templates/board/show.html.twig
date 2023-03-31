@@ -1,45 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ board.libelle }}{% endblock %}
+{% block title %}Board{% endblock %}
 
 {% block body %}
-<h1>  tableau [{{ board.id }}]</h1>
-     <a class="btn btn-info" href="{{ path('app_board_index') }}">Retour a la liste des tableaux</a>
-<br>
-                 <div class="card" style="width: 20rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{ board.libelle }} {{ board.id }}</h5>
-       <div class="btn-style" style="display: flex; flex-direction: column;">
-      <a class="btn btn-warning" href="{{ path('app_board_edit', {'id': board.id}) }}">Modifier le tableau</a>
-            {{ include('board/_delete_form.html.twig') }}
-
+<div class="container">
+    <h1 class="text-center">[{{ board.id }}] - {{ board.boardName }}</h1>
+         <hr>                                                                                                                                                                                 </h1>
+    <div class="row">
+        {% for taskList in taskLists %}
+            <div class="col-sm-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ taskList.taskListName }}</h5>
+                        <hr>
+                         <ul>
+                            {% for task in taskList.task %}
+                            <li>{{ task.taskName }}</li>
+                        {% endfor %}
+                    </ul>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 </div>
-  </div>
-</div>
-
-  {# {% for task in tasks %}
-          
-
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">[ {{ task.id }}]  {{ task.nom }}</h5>
-     <p class="card-text">{{ task.description }}</p>
-         <a class="btn btn-success" href="{{ path('app_task_show', {'id': task.id}) }}">Voir la mission</a>
-        <a class="btn btn-warning" href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier la mission</a>
-            {{ include('task/_delete_form.html.twig') }}
-  </div>
-</div>
-        
-
-              
-                
-        {% else %}
-               Pas de mission disponible
-        {% endfor %}
 
 
-    <a class"btn btn-info" href="{{ path('app_task_new') }}">Créer une mission</a> #}
+
+
+
+
+
+<hr>
+    <a class="btn btn-success" href="{{ path('app_board_index') }}">Retour a la liste des tableaux</a>
+
+    <a class="btn btn-warning" href="{{ path('app_board_edit', {'id': board.id}) }}">Modifier le tableau</a>
+
+    {{ include('board/_delete_form.html.twig') }}
+    </div>
+
 {% endblock %}
-
-
-

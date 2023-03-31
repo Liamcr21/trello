@@ -3,12 +3,11 @@
 {% block title %}Créer un nouveau tableau{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouveau tableau</h1>
-
+<div class="container">
+    <h1 class="text-center">Créer un nouveau tableau</h1>
+<hr>
     {{ include('board/_form.html.twig') }}
-
-    <a class="btn btn-info" href="{{ path('app_board_index') }}">Retour a la liste des tableau</a>
+<hr>
+    <a class="btn btn-danger"href="{{ path('app_board_index') }}">Retour à la liste des tableaux</a>
+    </div>
 {% endblock %}
-
-
-
