@@ -1,24 +1,30 @@
 {% extends 'base.html.twig' %}
 
-
-{% block title %}Mission [{{ task.id }}]{% endblock %}
-
+{% block title %}Task{% endblock %}
 
 {% block body %}
-    <h1>Mission [{{ task.id }}]</h1>
+    <h1>Task</h1>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">[Mission : {{ task.id }}]  {{ task.nom }}</h5>
-     <p class="card-text">{{ task.description }}</p>
-        <div class="btn-style" style="display: flex; flex-direction: column;">
-    <a class="btn btn-warning" href="{{ path('app_task_edit', {'id': task.id}) }}">modifier la mission</a>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ task.id }}</td>
+            </tr>
+            <tr>
+                <th>Task_name</th>
+                <td>{{ task.taskName }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ task.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_task_index') }}">back to list</a>
+
+    <a href="{{ path('app_task_edit', {'id': task.id}) }}">edit</a>
+
     {{ include('task/_delete_form.html.twig') }}
-  </div>
-</div>
-</div>           
-
-    <a class"btn btn-info" href="{{ path('app_task_index') }}">Retour</a>
-
-
 {% endblock %}
