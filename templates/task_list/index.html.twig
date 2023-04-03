@@ -3,33 +3,41 @@
 {% block title %}TaskList index{% endblock %}
 
 {% block body %}
-    <h1>TaskList index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
+    <div class="container">
+
+    <h1 class="text-center">Liste des TaskList</h1>
+<table class="table">
+    <thead>
+        <tr>
+               <th>Id</th>
                 <th>Task_list_name</th>
+                <th>Board</th>
                 <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+        </tr>
+    </thead>
+    <tbody>
         {% for task_list in task_lists %}
-            <tr>
+        <tr>
                 <td>{{ task_list.id }}</td>
                 <td>{{ task_list.taskListName }}</td>
-                <td>
-                    <a href="{{ path('app_task_list_show', {'id': task_list.id}) }}">show</a>
-                    <a href="{{ path('app_task_list_edit', {'id': task_list.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <td>{{ task_list.board }}</td>
+                        <td>
+                <a class="btn btn-info" href="{{ path('app_task_list_show', {'id': task_list.id}) }}">Voir</a>
+                <a class="btn btn-warning"href="{{ path('app_task_list_edit', {'id': task_list.id}) }}">Modifier</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">Aucune tasklist:</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <a class="btn btn-success" href="{{ path('app_task_list_new') }}">Créer un tasklist</a>
 
-    <a href="{{ path('app_task_list_new') }}">Create new</a>
+</div>
+
+
+
 {% endblock %}
