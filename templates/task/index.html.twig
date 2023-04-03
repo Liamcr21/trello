@@ -3,35 +3,43 @@
 {% block title %}Task index{% endblock %}
 
 {% block body %}
-    <h1>Task index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Task_name</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container">
+
+    <h1 class="text-center">Liste des Tasks</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#ID</th>
+            <th>Nom</th>
+            <th>description</th>
+            <th>Tasklist</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for task in tasks %}
-            <tr>
-                <td>{{ task.id }}</td>
+        <tr>
+             <td>{{ task.id }}</td>
                 <td>{{ task.taskName }}</td>
                 <td>{{ task.description }}</td>
-                <td>
-                    <a href="{{ path('app_task_show', {'id': task.id}) }}">show</a>
-                    <a href="{{ path('app_task_edit', {'id': task.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                 <td>{{ task.taskList}}</td>
 
-    <a href="{{ path('app_task_new') }}">Create new</a>
+                        <td>
+
+                <a class="btn btn-info" href="{{ path('app_task_show', {'id': task.id}) }}">Voir</a>
+                <a class="btn btn-warning"href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">Aucune task :(</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <a class="btn btn-success" href="{{ path('app_task_new') }}">Créer un task</a>
+
+</div>
+
 {% endblock %}
