@@ -5,18 +5,51 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path('app_login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}">
+<main class="login-form" style="margin-top:10%;">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Connexion Trello NWS</div>
+                    <div class="card-body">
+                        <form action="{{ path('app_login') }}" method="post">
+                            <div class="form-group row">
+                                <label for="username" class="col-md-4 col-form-label text-md-right">E-Mail</label>
+                                <div class="col-md-6">
+                                <input type="text" id="username" name="_username" value="{{ last_username }}">
+                                </div>
+                            </div>
 
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="_password">
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <div class="col-md-6">
+                                <input type="password" id="password" name="_password">
+                                </div>
+                            </div>
 
-        
-        <input type="hidden" name="_target_path" value="/board">
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    <div class="checkbox">
+                                        <label>
+                                                <input type="hidden" name="_target_path" value="/board">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
 
-        <button type="submit" class="btn btn-success">login</button>
-    </form>
-<br>
-    <a class="btn btn-info" href="register">S'inscire</a>
+                            <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-success">login</button>
+                                <a href="{{ path('app_register') }}" class="btn btn-info">
+                                    S'inscrire
+                                </a>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</main>
 {% endblock %}
