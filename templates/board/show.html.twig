@@ -16,7 +16,9 @@
 <div class="card mb-3">
     <div class="card-body">
         <h5 class="card-title">{{ taskList.taskListName }}</h5> 
-         <a class="btn btn-danger" href="{{ path('app_task_list_delete', {'id': taskList.id}) }}">Supprimer la TaskList</a>  
+         <a class="btn btn-sm btn-outline-danger" href="{{ path('app_task_list_delete', {'id': taskList.id}) }}">Supprimer</a> 
+        <a class="btn btn-sm btn-outline-warning" href="{{ path('app_task_list_edit', {'id': taskList.id}) }}">Modifier</a>  
+ 
         <hr>
         <ul>
             {% for task in taskList.task %}
