@@ -3,28 +3,18 @@
 {% block title %}Task{% endblock %}
 
 {% block body %}
-    <h1>Task</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ task.id }}</td>
-            </tr>
-            <tr>
-                <th>Task_name</th>
-                <td>{{ task.taskName }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ task.description }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_task_index') }}">back to list</a>
-
-    <a href="{{ path('app_task_edit', {'id': task.id}) }}">edit</a>
-
-    {{ include('task/_delete_form.html.twig') }}
+    <div class="container" style="margin-top:10%;">
+<div class="text-center">
+<div class="card" style="width: 79rem;">
+  <div class="card-body">
+    <h5 class="card-title">[Task : {{ task.id }}]{{ task.taskName }}</h5><br>
+        <p class="card-text"><td>Description : {{ task.description}}</td></p>
+    <p class="card-text">Tasklist :<td>{{ task.taskList}}</td></p>
+    <a class="btn btn-success" href="{{ path('app_task_index') }}" class="card-link">Retour à la liste des tasklist</a><br><br>
+    <a class="btn btn-warning" href="{{ path('app_task_edit', {'id': task.id}) }}" class="card-link">Modifier</a><br><br>
+       {{ include('task/_delete_form.html.twig') }}
+  </div>
+</div>
+</div>
+</div>
 {% endblock %}
