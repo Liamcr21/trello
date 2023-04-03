@@ -16,15 +16,28 @@
 <div class="card mb-3">
     <div class="card-body">
         <h5 class="card-title">{{ task_list.taskListName }}</h5> 
+                        <div class="row">
+                <div class="col-md-4">
         {{ include('task_list/_delete_form.html.twig') }}
+                  </div>
+                <div class="col-md-4">
         <a class="btn btn-sm btn-outline-warning" href="{{ path('app_task_list_edit', {'id': task_list.id}) }}">Modifier</a>  
+</div>
+</div>
  
         <hr>
         <ul>
             {% for task in task_list.task %}
-                <li>{{ task.taskName }} <a class="btn btn-sm btn-outline-warning" href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier</a> 
-                       {{ include('task/_delete_form.html.twig') }}<br>
+                <li>{{ task.taskName }}                                    
                 <p class="text-muted">- {{ task.description }}</p></li>
+                <div class="row">
+                <div class="col-md-4">
+                {{ include('task/_delete_form.html.twig') }}<br>
+                  </div>
+                <div class="col-md-4">
+<a class="btn btn-sm btn-outline-warning" href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier</a> 
+</div>
+</div>
             {% endfor %}
         </ul>
         <hr>
