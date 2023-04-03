@@ -5,22 +5,30 @@
 {% block body %}
 <div class="container">
     <h1 class="text-center">[{{ board.id }}] - {{ board.boardName }}</h1>
-         <hr>                                                                                                                                                                                 </h1>
+         <hr> 
+               <a class="btn btn-info" href="{{ path('app_task_list_new') }}">Ajouter une TaskList</a>
+
+            <br>  
+            <br>                                                                                                                                                                      </h1>
     <div class="row">
         {% for taskList in taskLists %}
-            <div class="col-sm-4">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ taskList.taskListName }}</h5>
-                        <hr>
-                         <ul>
-                            {% for task in taskList.task %}
-                            <li>{{ task.taskName }}</li>
-                        {% endfor %}
-                    </ul>
-                    <hr>
-                </div>
-            </div>
+            <div class="col-sm-4">  
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">{{ taskList.taskListName }}</h5> 
+         <a class="btn btn-danger" href="{{ path('app_task_list_delete', {'id': taskList.id}) }}">Supprimer la TaskList</a>  
+        <hr>
+        <ul>
+            {% for task in taskList.task %}
+                <li>{{ task.taskName }} <a class="btn btn-sm btn-outline-warning" href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier</a> <a class="btn btn-sm btn-outline-danger" href="{{ path('app_task_delete', {'id': task.id}) }}">Supprimer</a><br><p class="text-muted">- {{ task.description }}</p></li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <a class="btn btn-success" href="{{ path('app_task_new', {'taskListId': taskList.id }) }}">Ajouter une Task</a>    
+ 
+    </div>
+</div>
+
         </div>
     {% endfor %}
 </div>
