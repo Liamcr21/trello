@@ -18,7 +18,7 @@ class TaskList
     #[ORM\Column(name: 'task_list_name', length: 50)]
     private ?string $taskListName = null;
 
-    #[ORM\ManyToOne(inversedBy: 'taskLists', cascade: ['remove'])]
+    #[ORM\ManyToOne(inversedBy: 'taskLists')]
     private ?Board $board = null;
 
     #[ORM\OneToMany(mappedBy: 'taskList', targetEntity: Task::class, cascade: ['remove'])]
