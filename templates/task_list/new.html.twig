@@ -3,9 +3,8 @@
 {% block title %}New TaskList{% endblock %}
 
 {% block body %}
-    <h1>Create new TaskList</h1>
+    <h1 class="text-center">Créer une task list</h1>
 
     {{ include('task_list/_form.html.twig') }}
 
-    <a href="{{ path('app_task_list_index') }}">back to list</a>
 {% endblock %}
