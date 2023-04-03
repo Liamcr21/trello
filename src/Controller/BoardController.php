@@ -77,7 +77,7 @@ class BoardController extends AbstractController
     // dd($taskLists->getValues());
     return $this->render('board/show.html.twig', [
         'board' => $board,
-        'taskLists' => $taskLists,
+        'task_lists' => $taskLists,
     ]);
 }
 }

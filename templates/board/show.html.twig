@@ -11,22 +11,24 @@
             <br>  
             <br>                                                                                                                                                                      </h1>
     <div class="row">
-        {% for taskList in taskLists %}
+        {% for task_list in task_lists %}
             <div class="col-sm-4">  
 <div class="card mb-3">
     <div class="card-body">
-        <h5 class="card-title">{{ taskList.taskListName }}</h5> 
-         <a class="btn btn-sm btn-outline-danger" href="{{ path('app_task_list_delete', {'id': taskList.id}) }}">Supprimer</a> 
-        <a class="btn btn-sm btn-outline-warning" href="{{ path('app_task_list_edit', {'id': taskList.id}) }}">Modifier</a>  
+        <h5 class="card-title">{{ task_list.taskListName }}</h5> 
+        {{ include('task_list/_delete_form.html.twig') }}
+        <a class="btn btn-sm btn-outline-warning" href="{{ path('app_task_list_edit', {'id': task_list.id}) }}">Modifier</a>  
  
         <hr>
         <ul>
-            {% for task in taskList.task %}
-                <li>{{ task.taskName }} <a class="btn btn-sm btn-outline-warning" href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier</a> <a class="btn btn-sm btn-outline-danger" href="{{ path('app_task_delete', {'id': task.id}) }}">Supprimer</a><br><p class="text-muted">- {{ task.description }}</p></li>
+            {% for task in task_list.task %}
+                <li>{{ task.taskName }} <a class="btn btn-sm btn-outline-warning" href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier</a> 
+                       {{ include('task/_delete_form.html.twig') }}<br>
+                <p class="text-muted">- {{ task.description }}</p></li>
             {% endfor %}
         </ul>
         <hr>
-        <a class="btn btn-success" href="{{ path('app_task_new', {'taskListId': taskList.id }) }}">Ajouter une Task</a>    
+        <a class="btn btn-success" href="{{ path('app_task_new') }}">Ajouter une Task</a>    
  
     </div>
 </div>
