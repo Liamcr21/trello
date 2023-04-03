@@ -1,4 +1,49 @@
+<main class="login-form" style="margin-top:10%;">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Modification d'une task</div>
+                    <div class="card-body">
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+       <div class="form-group row">
+       <div class="col-md-6">
+    {{ form_row(form.task_name, { 
+            label: 'Nom de la task'
+        }) }}
+</div>
+ </div>
+               <div class="form-group row">
+               <div class="col-md-6">
+{{ form_row(form.description, { 
+            label: 'Description'
+        }) }}
+        </div>
+         </div>
+               <div class="form-group row">
+                <div class="col-md-6">
+{{ form_row(form.taskList, { 
+            label: 'Tasklist'
+        }) }}
+        </div>
+         </div>
+
+        <div class="text-center">
+             <button class="btn btn-warning">{{ button_label|default('Sauvegarder') }}</button>
+            </div>
 {{ form_end(form) }}
+
+                            <div class="text-center">
+<br>
+    <a class="btn btn-success" href="{{ path('app_task_index') }}">Retour à la liste des task</a>
+<br><br>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</main>

@@ -3,11 +3,10 @@
 {% block title %}Edit Task{% endblock %}
 
 {% block body %}
-    <h1>Edit Task</h1>
+    <h1 class="text-center">Modifier une task</h1>
 
-    {{ include('task/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('task/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a href="{{ path('app_task_index') }}">back to list</a>
 
-    {{ include('task/_delete_form.html.twig') }}
 {% endblock %}
+    

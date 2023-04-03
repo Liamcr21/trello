@@ -10,7 +10,7 @@
     <h5 class="card-title">[Task : {{ task.id }}]{{ task.taskName }}</h5><br>
         <p class="card-text"><td>Description : {{ task.description}}</td></p>
     <p class="card-text">Tasklist :<td>{{ task.taskList}}</td></p>
-    <a class="btn btn-success" href="{{ path('app_task_index') }}" class="card-link">Retour à la liste des tasklist</a><br><br>
+    <a class="btn btn-success" href="{{ path('app_task_index') }}" class="card-link">Retour à la liste des task</a><br><br>
     <a class="btn btn-warning" href="{{ path('app_task_edit', {'id': task.id}) }}" class="card-link">Modifier</a><br><br>
        {{ include('task/_delete_form.html.twig') }}
   </div>
